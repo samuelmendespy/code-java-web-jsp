@@ -1,0 +1,7 @@
+.main iframe{
+    border: none;
+    position: absolute;
+    margin-top: 2px;
+    width: 100%;
+    height: 100%;
+}
