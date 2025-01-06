@@ -46,6 +46,25 @@ public void alterarPessoa(Pessoa p) throws Exception {
     close();
 }
 
+public boolean updatePerson(Pessoa p) throws Exception {
+    try{
+        open();
+        stmt = con.prepareStatement("UPDATE pessoa SET name = ?, email = ? WHERE id = ?");
+        stmt.setString(1, p.getNomePessoa());
+        stmt.setString(2, p.getEmail());
+        stmt.setInt(3, p.getIdPessoa());
+        stmt.execute();
+
+    } catch (SQLException ex) {
+        System.out.println("Error: " + ex.getMessage() );
+        return false;
+    } finally {
+        stmt.close();
+        close();
+    }
+    return true;
+}
+
 public void excluirPessoa(Pessoa p) throws Exception {
 
     open();
@@ -74,6 +93,41 @@ public boolean deletePerson(Pessoa p) throws Exception {
     return true;
 }
 
+public Pessoa findOnePerson(int id) throws Exception{
+    Pessoa personFound = new Pessoa();
+    personFound.setIdPessoa(id);
+    
+    personFound.setEmail("mail@mail");
+    personFound.setNomePessoa("name teste");
+    
+    try{
+        open();
+        stmt = con.prepareStatement("SELECT * FROM pessoa WHERE id = ?");
+        stmt.setInt(1, id);
+        rs = stmt.executeQuery();
+        
+        if (rs.next()) {
+            Pessoa p = new Pessoa();
+            p.setIdPessoa(rs.getInt("id"));
+            p.setNomePessoa(rs.getString("name"));
+            p.setEmail(rs.getString("email"));
+            return p;
+        }
+        
+    } catch (SQLException sqlEx) {
+        System.err.println("Erro no banco de dados: " + sqlEx.getMessage());
+        throw sqlEx;
+    } catch (Exception e) {
+        System.out.println("Error: " + e.getMessage());
+        return null;
+    
+    } finally{
+        if (rs != null) rs.close();
+        if (stmt != null) stmt.close();
+        close();
+    }
+    return personFound;
+}
     // retornando um objeto
 public Pessoa consultarPessoaIndividual(int cod) throws Exception {
     open();
