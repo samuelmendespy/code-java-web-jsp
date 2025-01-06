@@ -1,18 +1,14 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title><%= request.getAttribute("pageTitle") != null ? request.getAttribute("pageTitle") : "App Title" %></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/libs/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
     </head>
     <body class="bg-light">
-        <!-- HEADER -->
         <header>
             <div class="container py-3">
                 <h1 class="text-dark mb-3" id="app-title">TODO write content</h1>
@@ -29,7 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#" target="app_window">Find</a></li>
-                            <li><a class="dropdown-item" href="pages/register.jsp">Registration</a></li>
+                            <li><a class="dropdown-item" href="<%= request.getContextPath() %>/pages/register.jsp" target="app_window">Registration</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -38,16 +34,5 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </ul>
             </nav>
         </header>
-        <!-- MAIN -->
-        <main>
-            <!-- app_jsp -->
-            <iframe name="app_window"></iframe>
-        </main>
-        <!-- FOOTER -->
-        <footer class="mt-5">
-            <p>&copy; Copyright 2025</p>
-        </footer>
-        <!-- SCRIPTS -->
-        <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

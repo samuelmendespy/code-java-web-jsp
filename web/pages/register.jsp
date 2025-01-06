@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ include file="../header.jsp" %>
 <div class="container">
     <h3 class="text-primary mb-2">Management</h3>
 </div>
@@ -13,14 +15,14 @@
         </label>
         <fieldset>
             <div class="form-group">
-                <label for="fieldName">Name</label>
-                <input type="text" id="fieldName" class="form-control" name="name" required>
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" name="name" required>
             </div>
         </fieldset>
         <fieldset>
             <div class="form-group mb-4">
-                <label for="fieldEmail">Email</label>
-                <input type="email" id="fieldEmail" class="form-control" name="email" required>
+                <label for="email">Email</label>
+                <input type="email" id="name" class="form-control" name="email" required>
             </div>
         </fieldset>
         <button type="submit" class="btn btn-primary" onclick="submit()">Send</button>
